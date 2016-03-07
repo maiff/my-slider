@@ -108,6 +108,8 @@
 		<div class="content2">
 			
 			<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>consectetur adipisicing elit, sed do eiusmod</p>
 			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
 			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
 				<p>consectetur adipisicing elit, sed do eiusmod</p>
@@ -130,6 +132,12 @@
 	
 var test=new Bar('.main','.content','.content-wrap');
 var test2=new Bar('.main2','.content2','.content-wrap2');
+test.setBarAttr({
+	'background':'red',
+});
+test.setSliderAttr({
+	'background':'red',
+});
 
 // 	var test=new Bar();
 // 	test.render(document.querySelector('.main'));

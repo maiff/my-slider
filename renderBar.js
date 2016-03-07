@@ -18,6 +18,18 @@ function Bar(target1,content2,warp3){
   		}
   		return false;
 	};
+	this.setBarAttr=function(){
+		var obj_sty=arguments[0];
+		for(var i in obj_sty){
+			bar.style[i]=obj_sty[i];
+		}
+	};
+	this.setSliderAttr=function(){
+		var obj_sty=arguments[0];
+		for(var i in obj_sty){
+			oParent.style[i]=obj_sty[i];
+		}
+	};
 	bar.onmousedown=function(ev){
 		var e=ev||event;
 		var disY=e.clientY-bar.offsetTop;
@@ -47,6 +59,7 @@ Bar.prototype={
 		slider_contain.className='slider-contain';
 		slider_contain.appendChild(bar);
 		target.appendChild(slider_contain);
+		this_bar=bar;
 		return bar;
 	},
 	setTop:function(l,oParent,content,oWarp,bar){
@@ -64,6 +77,7 @@ Bar.prototype={
 		if(h<0) {
 			barHeight=0;
 			bar.style.height=barHeight;
+			this.setTop=function(){};
 		}
 		else{
 			barHeight=oParent.offsetHeight-h;
