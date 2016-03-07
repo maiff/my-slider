@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义样式滑块</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.main{
+		position: absolute;
+		left: 20%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		width: 300px;
+		height: 500px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		
+	}
+	.main2{
+		position: absolute;
+		left: 80%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		width: 300px;
+		height: 600px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		
+	}
+	.content-wrap2{
+		
+		position: absolute;
+		top: 0;
+		overflow: hidden;
+		height: inherit;
+		width: inherit;
+	}
+	.content-wrap{
+		
+		position: absolute;
+		top: 0;
+		overflow: hidden;
+		height: inherit;
+		width: inherit;
+	}
+	.content{
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+	.content2{
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.slider-contain{/*滑条样式*/
+		position: absolute;
+		left: 100%;
+		top:0;
+		width: 10px;
+		height:inherit;
+		background: #ccc;
+		border-radius:5px; 
+	}
+	.bar{/*滑块样式*/
+		position: absolute;
+		top: 0;
+		left:-15%;
+		width: 13px;
+		border-radius: 6px;
+		background: #999; 
+	}
+	</style>
+</head>
+<body>
+<div class="main">
+	<div class="content-wrap">
+		<div class="content">
+			<p>Lorem ipsum dolor sit amet, </p>
+			<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+			<p>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+			<p>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
+			<p>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, </p>
+			<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+				<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+			<p>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+				<p>consectetur adipisicing elit, sed do eiusmod</p>
+			
+			<p>end</p>
+		</div>
+	</div>
+	
+</div>
+<div class="main2">
+	<div class="content-wrap2">
+		<div class="content2">
+			
+			<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+				<p>consectetur adipisicing elit, sed do eiusmod</p>
+			<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+			<p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+			<p>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+				<p>consectetur adipisicing elit, sed do eiusmod</p>
+			
+			<p>end</p>
+		</div>
+	</div>
+	
+</div>
+
+	
+</body>
+<script type="text/javascript" src="renderBar.js"></script>
+<script type="text/javascript">
+	
+var test=new Bar('.main','.content','.content-wrap');
+var test2=new Bar('.main2','.content2','.content-wrap2');
+
+// 	var test=new Bar();
+// 	test.render(document.querySelector('.main'));
+// 	var bar=document.querySelector('.bar');
+// 	var oParent=document.querySelector('.slider-contain');
+// 	var oWarp=document.querySelector('.content-wrap');
+// 	var content=document.querySelector('.content');
+// 	var mousewheel = isFirefox() ? "DOMMouseScroll" : "mousewheel";
+	// function isFirefox(){
+	// 	return navigator.userAgent.toLowerCase().match(/firefox\/([\d.]+)/)?true:false;
+	// }
+// 	function addEvent(obj,sEv,fn){
+// 		if(obj.addEventListener){
+// 			obj.addEventListener(sEv,fn,false);
+// 		}
+// 		else obj.attachEvent('on'+sEv,fn);
+// 	}
+// 	function mouseWheel(ev){
+//  	 	var oEv = ev || event;
+//  	 	bDown = oEv.wheelDelta ? oEv.wheelDelta < 0 : oEv.detail > 0;
+//   	 	if(bDown){
+//    			setTop(bar.offsetTop + 10);
+//   		}else{
+//     // setLeft(oBox.offsetLeft - 10);
+//     		setTop(bar.offsetTop - 10);
+//  			 }
+//   		if(oEv.preventDefault){
+//     		oEv.preventDefault();
+//   		}
+//   		return false;
+// }
+
+	// bar.onmousedown=function(ev){
+	// 	var e=ev||event;
+	// 	var disY=e.clientY-bar.offsetTop;
+	// 	document.onmousemove=function(ev){
+	// 		var e=ev||event;
+	// 		var l=e.clientY-disY;
+	// 		setTop(l);
+	// 	}
+	// 	document.onmouseup=function(){
+	// 		document.onmouseup=null;
+	// 		document.onmousemove=null;
+	// 	}
+	// 	return false;
+	// }
+// 	function setTop(l){
+// 		if(l<0)l=0;
+// 		else if(l>oParent.offsetHeight-bar.offsetHeight){
+// 			l=oParent.offsetHeight-bar.offsetHeight;
+// 		}
+// 		bar.style.top=l+'px';
+// 		var n=l/(oParent.offsetHeight-bar.offsetHeight);
+// 		content.style.top =- (content.offsetHeight - oWarp.offsetHeight)*n + 'px';
+
+// 	}
+// 	function setBarHeight(h){
+// 		var barHeight=oParent.offsetHeight-h;
+//   		bar.style.height = barHeight < 30 ? '30px' : barHeight + 'px';
+// }
+// setBarHeight(content.offsetHeight-oWarp.offsetHeight);
+// addEvent(oParent, mousewheel, mouseWheel);
+// addEvent(oWarp, mousewheel, mouseWheel);
+
+
+
+</script>
+</html>
