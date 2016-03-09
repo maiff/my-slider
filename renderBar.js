@@ -43,7 +43,10 @@ function Bar(target1,content2,warp3){
 			document.onmousemove=null;
 		}
 		return false;
-	};	
+	};
+	this.new_bar=function(){
+		
+	}
 
 		this.bar_tool.addEvent(oWarp,mousewheel,this.mouseWheel);
 		this.bar_tool.addEvent(oParent,mousewheel,this.mouseWheel);
