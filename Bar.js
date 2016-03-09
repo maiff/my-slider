@@ -72,7 +72,7 @@ Bar.prototype={
   	 		var oEv = ev || event;
  	 		var bDown = oEv.wheelDelta ? oEv.wheelDelta < 0 : oEv.detail > 0;
  	 		
- 	 		alert(that)
+ 	 		
   	 		if(bDown){
    				that.setTop(that.bar.offsetTop + 10);
   			}else{
