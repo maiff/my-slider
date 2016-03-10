@@ -1,5 +1,8 @@
 function Bar(target,content,warp){
-	this.new_bar=function(){
+	this.target=this.bar_tool.$(target);
+	this.content=this.bar_tool.$(content);
+	this.oWarp=this.bar_tool.$(warp);
+	this.bar=(function(){
 		var slider_contain=document.createElement('div');
 		var bar=document.createElement('div');
 		bar.className='bar';
@@ -7,11 +10,7 @@ function Bar(target,content,warp){
 		slider_contain.className='slider-contain';
 		slider_contain.appendChild(bar);
 		return bar;
-	};
-	this.target=this.bar_tool.$(target);
-	this.content=this.bar_tool.$(content);
-	this.oWarp=this.bar_tool.$(warp);
-	this.bar=this.new_bar();
+	})();
 	this.oParent=this.bar.parentNode;
 	var that=this;
 	this.bar.onmousedown=function(ev){
@@ -20,7 +19,7 @@ function Bar(target,content,warp){
 		document.onmousemove=function(ev){
 			var e=ev||event;
 			var l=e.clientY-disY;
-			that.setTop(l);
+			that.setTop(l) ;
 		}
 		document.onmouseup=function(){
 			document.onmouseup=null;
@@ -28,6 +27,7 @@ function Bar(target,content,warp){
 		}
 		return false;
 	};
+
 	this.init();
 }
 
@@ -36,9 +36,11 @@ Bar.prototype={
 		var mousewheel =this.bar_tool.isFirefox()? "DOMMouseScroll" : "mousewheel";
 		this.render();
 		var mouseWheel=this.mouseWheel();
+		var clickMove=this.clickMove();
 		this.setBarHeight(this.content.offsetHeight-this.oWarp.offsetHeight);
 		this.bar_tool.addEvent(this.oWarp,mousewheel,mouseWheel);
 		this.bar_tool.addEvent(this.oParent,mousewheel,mouseWheel);
+		this.bar_tool.addEvent(this.oParent,'mousedown',clickMove);
 	},
 	render:function(){
 		this.target.appendChild(this.oParent);
@@ -96,6 +98,17 @@ Bar.prototype={
 		for(var i in obj_sty){
 			this.oParent.style[i]=obj_sty[i];
 		}
+	},
+	clickMove:function(){	
+		var that=this;
+		return function(ev){
+			var objRec=that.bar.getBoundingClientRect();
+			var oEv = ev || event;
+			var top=objRec.top;
+			var temp=oEv.clientY-top-that.bar.offsetHeight/2;
+			var l=that.bar.offsetTop+temp;
+			that.setTop(l);
+		}	
 	},
 	bar_tool:{
 		isFirefox:function (){
